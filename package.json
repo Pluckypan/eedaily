@@ -1,5 +1,16 @@
 {
-  "name"    : "eedaily",
-  "version" : "0.0.1",
-  "main"    : "main.js"
+	"name": "eedaily",
+	"description": "Electron EEDaily",
+	"version": "0.0.1",
+	"main": "main.js",
+	"scripts": {
+		"start": "electron ."
+	},
+	"repository": "git@github.com:Pluckypan/eedaily.git",
+	"keywords": [
+		"Electron",
+		"EEDaily"
+	],
+	"author": "Plucky",
+	"license": "Apache-2.0"
 }
