@@ -7,15 +7,15 @@ $(function() {
 	$("#btnAsync").click(function() {
 		ipc.send('ASYNC-MSG', 'ping-ping-ping');
 	});
-	$("#btnAjax").click(function(){
+	$("#btnAjax").click(function() {
 		$.ajax({
-			type:"get",
-			url:"http://wthrcdn.etouch.cn/weather_mini?city=青岛",
-			async:true,
-			success:function(data){
+			type: "get",
+			url: "http://wthrcdn.etouch.cn/weather_mini?city=青岛",
+			async: true,
+			success: function(data) {
 				$("#preResult").html(data);
 			},
-			error:function(err){
+			error: function(err) {
 				$("#preResult").html(err);
 			}
 		});

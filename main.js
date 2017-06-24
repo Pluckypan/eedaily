@@ -29,7 +29,7 @@ function createWindow() {
 		title: app.getName()
 	});
 	// 加载应用的 index.html
-	mainWindow.loadURL('file://' + __dirname + '/index.html');
+	mainWindow.loadURL('file://' + __dirname + '/sections/index.html');
 	// 当 window 被关闭，这个事件会被发出
 	mainWindow.on('closed', function() {
 		mainWindow = null;
