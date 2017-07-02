@@ -12,6 +12,7 @@
 		<link href="../assets/font-awesome/css/font-awesome.css" rel="stylesheet">
 		<link href="../assets/css/animate.css" rel="stylesheet">
 		<link href="../assets/css/style.css" rel="stylesheet">
+		<link href="../assets/css/plugins/jsTree/style.min.css" rel="stylesheet">
 		<link href="css/index.css" rel="stylesheet" />
 	</head>
 
@@ -68,13 +69,18 @@
 						<button class="btn btn-primary" id="btnSync">Sync Button</button>
 						<button class="btn btn-primary" id="btnAsync">Async Button</button>
 						<button class="btn btn-primary" id="btnAjax">Ajax</button>
+						<button class="btn btn-primary" id="btnNotify">Notify</button>
+						<button class="btn btn-primary" id="btnOpenPath">OpenPath</button>
+						<button class="btn btn-primary" id="btnOpenUrl">OpenUrl</button>
+						<button class="btn btn-primary" id="btnOpenFileAndDir">OpenFileAndDir</button>
+						<button class="btn btn-primary" id="btnEditor">Editor</button>
 						<pre id="preResult"></pre>
 					</div>
 					<div class="col-lg-12" id="col-about" style="display: none;">
 						<div class="ibox-content">
 							<h2>关于</h2>
 							<small></small>
-							<div id="world-map" style="height: 300px; width: 100%;">AAABBBCCC</div>
+							<div id="using_json"></div>
 						</div>
 					</div>
 				</div>
@@ -102,6 +108,7 @@
 				$.getScript(assetsPath + "/assets/js/plugins/slimscroll/jquery.slimscroll.min.js");
 				$.getScript(assetsPath + "/assets/js/inspinia.js");
 				$.getScript(assetsPath + "/assets/js/plugins/pace/pace.min.js");
+				$.getScript(assetsPath + "/assets/js/plugins/jsTree/jstree.min.js");
 				$.getScript(assetsPath + "/process/render/index.js");
 			})
 		</script>
