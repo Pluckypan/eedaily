@@ -81,21 +81,6 @@ $(function() {
 		$("#col-about").css("display", "block");
 	});
 
-	var configPath = path.resolve(__dirname, "../config.json");
-	var jsPath = path.resolve(__dirname, "lib/eeutils.js");
-	var eeutils = require(jsPath);
-	if(eeutils.exists(configPath)) {
-		var configStr = eeutils.read(configPath);
-		$("#preResult").html(configStr + "");
-	} else {
-		var cfg = {
-			"A": "A"
-		};
-		var cfgStr = JSON.stringify(cfg);
-		eeutils.write(configPath, cfgStr);
-		$("#preResult").html(cfgStr);
-	}
-
 	$('#using_json').jstree({
 		'plugins': ['types', 'dnd'],
 		'types': {

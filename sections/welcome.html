@@ -13,6 +13,7 @@
 
 		<link href="../assets/css/animate.css" rel="stylesheet">
 		<link href="../assets/css/style.css" rel="stylesheet">
+		<link href="../assets/js/plugins/notie/notie.css" rel="stylesheet"/>
 
 	</head>
 
@@ -29,33 +30,33 @@
 							</div>
 						</div>
 						<div class="form-group"><label class="col-sm-2 control-label">网站名称</label>
-							<div class="col-sm-10"><input type="text" class="form-control"></div>
+							<div class="col-sm-10"><input type="text" class="form-control" id="tvTitle"></div>
 						</div>
 						<div class="hr-line-dashed"></div>
 						<div class="form-group"><label class="col-sm-2 control-label">网站描述</label>
-							<div class="col-sm-10"><input type="text" class="form-control"> <span class="help-block m-b-none">例如:easypage快速构建网站</span>
+							<div class="col-sm-10"><input type="text" class="form-control" id="tvDesc"> <span class="help-block m-b-none">例如:easypage快速构建网站</span>
 							</div>
 						</div>
 						<div class="hr-line-dashed"></div>
 						<div class="form-group"><label class="col-sm-2 control-label">关键字</label>
 
-							<div class="col-sm-10"><input type="text" placeholder="例如:eedaily,echo,plucky" class="form-control"></div>
+							<div class="col-sm-10"><input type="text" placeholder="例如:eedaily,echo,plucky" id="tvKeywords" class="form-control"></div>
 						</div>
 						<div class="hr-line-dashed"></div>
 						<div class="form-group">
 							<label class="col-sm-2 control-label">网站CDN</label>
 
 							<div class="col-sm-10">
-								<div><label> <input type="radio" checked="" value="option1" id="optionsRadios1" name="optionsRadios"> 国际站点 (GitHub) </label></div>
-								<div><label> <input type="radio" value="option2" id="optionsRadios2" name="optionsRadios"> 国内站点 (OSChina)</label></div>
-								<div><label> <input type="radio" value="option3" id="optionsRadios2" name="optionsRadios"> 国内站点 (Coding)</label></div>
+								<div><label> <input type="radio" checked="" value="github" id="github" name="rdCDN"> 国际站点 (GitHub) </label></div>
+								<div><label> <input type="radio" value="oschina" id="oschina" name="rdCDN"> 国内站点 (OSChina)</label></div>
+								<div><label> <input type="radio" value="coding" id="coding" name="rdCDN"> 国内站点 (Coding)</label></div>
 							</div>
 						</div>
 						<div class="hr-line-dashed"></div>
 						<div class="form-group"><label class="col-sm-2 control-label">网站类别</label>
 
 							<div class="col-sm-10">
-								<select class="form-control m-b" name="account">
+								<select class="form-control m-b" id="webType">
 									<option>个人主页</option>
 									<option>企业网站</option>
 									<option>其他类别</option>
@@ -63,39 +64,8 @@
 							</div>
 						</div>
 						<div class="pull-right">
-							<a class="btn btn-white" type="submit">打开网站</a>
-							<a class="btn btn-primary" data-toggle="modal" href="#modal-form">创建网站</a>
-							<div id="modal-form" class="modal fade" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-body">
-											<div class="row">
-												<div class="col-sm-6 b-r">
-													<h3 class="m-t-none m-b">Sign in</h3>
-
-													<p>Sign in today for more expirience.</p>
-
-													<form role="form">
-														<div class="form-group"><label>Email</label> <input type="email" placeholder="Enter email" class="form-control"></div>
-														<div class="form-group"><label>Password</label> <input type="password" placeholder="Password" class="form-control"></div>
-														<div>
-															<button class="btn btn-sm btn-primary pull-right m-t-n-xs" type="submit"><strong>Log in</strong></button>
-															<label> <input type="checkbox" class="i-checks"> Remember me </label>
-														</div>
-													</form>
-												</div>
-												<div class="col-sm-6">
-													<h4>Not a member?</h4>
-													<p>You can create an account:</p>
-													<p class="text-center">
-														<a href=""><i class="fa fa-sign-in big-icon"></i></a>
-													</p>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
+							<a class="btn btn-white" href="#" id="btnOpenPro">打开工程</a>
+							<a class="btn btn-primary"  href="#" id="btnSavePro">创建工程</a>
 						</div>
 
 					</form>
@@ -114,6 +84,8 @@
 				$.getScript(assetsPath + "/assets/js/plugins/slimscroll/jquery.slimscroll.min.js");
 				$.getScript(assetsPath + "/assets/js/inspinia.js");
 				$.getScript(assetsPath + "/assets/js/plugins/pace/pace.min.js");
+				$.getScript(assetsPath + "/assets/js/plugins/notie/notie.js");
+				$.getScript(assetsPath + "/process/render/welcome.js");
 			})
 		</script>
 	</body>

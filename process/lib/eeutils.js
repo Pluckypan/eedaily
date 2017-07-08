@@ -11,7 +11,8 @@ module.exports = {
 	sleep: sleep,
 	deleteFolderRecursive: deleteFolderRecursive,
 	write: write,
-	read: read
+	read: read,
+	getJson: getJson
 }
 
 /** 文件操作相关  ----start---- **/
@@ -48,8 +49,16 @@ function write(filepath, content) {
 	return fs.writeFileSync(filepath, content);
 }
 
-function read(filepath){
+function read(filepath) {
 	return fs.readFileSync(filepath);
+}
+
+function getJson(str) {
+	try {
+		return JSON.parse(str);
+	} catch(e) {
+		return null;
+	}
 }
 
 //拷贝文件
