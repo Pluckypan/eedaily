@@ -6,6 +6,7 @@ const app = electron.app;
 if(process.mas) app.setName('EEDaily');
 
 var mainWindow = null;
+var currentProjectPath;
 
 function initAppMenu() {
 	var files = glob.sync(path.join(__dirname, 'process/main/**/*.js'))
@@ -15,7 +16,7 @@ function initAppMenu() {
 	});
 }
 
-function initApp(){
+function initApp() {
 	initAppMenu();
 }
 initApp();
@@ -28,9 +29,13 @@ function createWindow() {
 		minHeight: 600,
 		title: app.getName()
 	});
-	// 加载应用的 index.html
-	mainWindow.loadURL('file://' + __dirname + '/sections/index.html');
-	// 当 window 被关闭，这个事件会被发出
+
+	if(currentProjectPath && currentProjectPath.length > 0) {
+		mainWindow.loadURL('file://' + __dirname + '/sections/index.html');
+	} else {
+		mainWindow.loadURL('file://' + __dirname + '/sections/welcome.html');
+	}
+
 	mainWindow.on('closed', function() {
 		mainWindow = null;
 	});
