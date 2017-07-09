@@ -8,9 +8,11 @@ module.exports = {
 	getConfig: getConfig,
 	exists: exists,
 	read: read,
+	write: write,
 	getJson: getJson,
 	setLastpath: setLastpath,
-	clearLaspath: clearLaspath
+	clearLaspath: clearLaspath,
+	getRecent: getRecent
 };
 
 function exists(path) {
@@ -19,6 +21,10 @@ function exists(path) {
 
 function read(filepath) {
 	return eeutils.read(filepath);
+}
+
+function write(filepath, content) {
+	return eeutils.write(filepath, content);
 }
 
 function getJson(str) {
@@ -31,7 +37,8 @@ function getConfig() {
 	}
 	if(!eeutils.exists(envCfg)) {
 		var obj = {
-			"lastPath": ""
+			"lastPath": "",
+			"recent": []
 		};
 		eeutils.write(envCfg, JSON.stringify(obj));
 	}
@@ -45,12 +52,29 @@ function setLastpath(path) {
 	var cfg = getConfig();
 	if(cfg) {
 		cfg.lastPath = path;
+		if(!cfg.recent || cfg.recent.length == 0) {
+			cfg.recent = [path];
+		} else {
+			if(cfg.recent.indexOf(path) == -1) {
+				cfg.recent.push(path);
+			}
+		}
 	} else {
 		cfg = {
-			"lastPath": path
+			"lastPath": path,
+			"recent": [path]
 		}
 	}
+	if(!path || path.length == 0) {
+		cfg.recent = [];
+	}
 	eeutils.write(envCfg, JSON.stringify(cfg));
+}
+
+function getRecent() {
+	var cfg = getConfig();
+	var arr = cfg ? cfg.recent : null;
+	return arr ? arr : [];
 }
 
 function clearLaspath() {

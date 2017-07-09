@@ -13,6 +13,20 @@ $(function() {
 		}
 	})
 
+	var recent_pro = ipc.sendSync('get-recent-project');
+	if(recent_pro && recent_pro.length) {
+		var str = "";
+		recent_pro.forEach(function(pro, index) {
+			str += '<li><a href="#" class="recent-pro" data-url="' + pro + '">' + pro + '</a></li>';
+		});
+		$("#proDivider").before(str);
+		$(".recent-pro").click(function() {
+			ipc.send('open-index-page', $(this).attr("data-url"));
+		});
+	} else {
+		$("#proDivider").before('<li><a href="#">No Recent</a></li>');
+	}
+
 	$("#btnOpenPro").click(function() {
 		ipc.send('open-project');
 	});

@@ -11,6 +11,10 @@ ipc.on('SYNC-MSG', function(event, arg) {
 	event.returnValue = 'SYNC-MSG Replay:data(' + arg + ')';
 })
 
+ipc.on('get-recent-project', function(event, arg) {
+	event.returnValue = envutil.getRecent();
+})
+
 ipc.on('ASYNC-MSG', function(event, arg) {
 	event.sender.send('ASYNC-MSG-Replay', arg);
 })
@@ -21,6 +25,9 @@ ipc.on('open-file-dialog', function(event) {
 	}, function(files) {
 		if(files) event.sender.send('selected-directory', files)
 	})
+})
+ipc.on('open-index-page', function(event, path) {
+	loadIndexUrl(path);
 })
 
 ipc.on('open-project', function(event) {
@@ -48,7 +55,7 @@ ipc.on('save-project', function(event, arg) {
 	};
 	dialog.showSaveDialog(options, function(filename) {
 		if(filename) {
-			eeutils.write(filename, arg);
+			envutil.write(filename, arg);
 			event.sender.send('save-project-path', filename);
 			loadIndexUrl(filename);
 		}
