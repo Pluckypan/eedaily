@@ -4,8 +4,8 @@ const ipc = electron.ipcMain;
 const dialog = electron.dialog;
 const BrowserWindow = electron.BrowserWindow;
 var rootPath = require('path').resolve(__dirname, "../../");
-var jsPath = path.resolve(rootPath, "process/lib/eeutils.js");
-var eeutils = require(jsPath);
+var jsPath = path.resolve(rootPath, "process/lib/envutil.js");
+var envutil = require(jsPath);
 
 ipc.on('SYNC-MSG', function(event, arg) {
 	event.returnValue = 'SYNC-MSG Replay:data(' + arg + ')';
@@ -56,14 +56,13 @@ ipc.on('save-project', function(event, arg) {
 })
 
 function loadIndexUrl(path) {
-	if(!eeutils.exists(path)) return;
-	var configStr = eeutils.read(path);
+	if(!envutil.exists(path)) return;
+	var configStr = envutil.read(path);
 	if(!configStr || configStr.length == 0) return;
-	var pro = eeutils.getJson(configStr);
-	console.log(pro);
+	var pro = envutil.getJson(configStr);
 	if(pro == null) return;
 	var wins = BrowserWindow.getAllWindows();
-	console.log(wins);
 	if(wins == null || wins.length == 0) return;
+	envutil.setLastpath(path);
 	wins[0].loadURL('file://' + rootPath + '/sections/index.html');
 }
